@@ -23,4 +23,4 @@ function printOutputVal() {
 exports.seOutputVal = seOutputVal;
 exports.setIncrement = setIncrement;
 
-module.exports.printNextCount = printNextCount;
+module.exports.printNextCount = printNextCount;//对外公开

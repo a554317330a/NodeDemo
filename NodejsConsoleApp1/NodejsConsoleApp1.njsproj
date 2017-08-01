@@ -11,7 +11,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>f72113d3-d2b3-4dce-9a43-0380801cc2b4</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>connection.js</StartupFile>
+    <StartupFile>connectiontPoll.js</StartupFile>
     <StartWebBrowser>False</StartWebBrowser>
     <SearchPath>
     </SearchPath>
@@ -49,6 +49,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="connection.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="connectiontPoll.js">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="modules_counter.js">

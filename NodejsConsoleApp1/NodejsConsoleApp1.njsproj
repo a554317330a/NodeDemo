@@ -11,7 +11,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>f72113d3-d2b3-4dce-9a43-0380801cc2b4</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>modules_diff_export.js</StartupFile>
+    <StartupFile>connectiontPoll.js</StartupFile>
     <StartWebBrowser>False</StartWebBrowser>
     <SearchPath>
     </SearchPath>
@@ -45,6 +45,15 @@
     <Folder Include="Scripts\typings\node\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="2_modules_diff_exports_load.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="connection.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="connectiontPoll.js">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="modules_counter.js">
       <SubType>Code</SubType>
     </Compile>

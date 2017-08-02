@@ -1,10 +1,13 @@
 ﻿var mysql = require('mysql');
-var pool = mysql.createPool({
+var db_config = {
     host: 'localhost',
     user: 'root',
     password: '123456',
-    database : 'nodejsdb'
-});
+    database: 'nodejsdb'
+}
+var pool = mysql.createPool(db_config);
+
+
 
 //監聽connect
 pool.on('connection', function (connection) {
@@ -12,6 +15,7 @@ pool.on('connection', function (connection) {
 }); 
 
 /*
+//直接使用
 pool.query(" select 1+1 as result  ", function (err, rows, fields) {
     if (err) {
         console.log("err:",err.message);
@@ -20,5 +24,59 @@ pool.query(" select 1+1 as result  ", function (err, rows, fields) {
 });
 */
 
+/*
+//共享
 
 
+once(`select * from userinfo where Id=${5} or Id=${6} `, function (err, result) { if (err) { console.log(err.message); } console.log(result); });
+
+//过滤
+
+once("select * from userinfo where Id =" + pool.escape('Id = 5 or Id= 6'), function (err, result) { if (err) { console.log(err.message); } console.log(result); });
+once("select * from userinfo where Id = " + pool.escape('5'), function (err, result) { if (err) { console.log(err.message); } console.log(result); });
+
+
+function once(sql, cb) {
+    pool.getConnection(function (err, con) {
+        if (!con || err) {
+            cb(err, null)
+        } else {
+            con.query(sql, function (err, result) {
+                con.release();
+                cb(err, result);
+            })
+        }
+    });
+}
+
+
+*/
+
+
+/**
+ * 短綫重連
+ 
+var connection;
+function handleDisconnect() {
+    connection =mysql.createConnection(db_config);
+    connection.connect(function (err) {
+        if (err) {
+            console.log("正在断线重连.....", new Date());
+            setTimeout(handleDisconnect, 2000);
+            return;
+        }
+        console.log("连接成功");
+    });
+    connection.on("error", function (err) {
+        console.log("db error", error);
+        if (err.code == "PROTOCOL_CONNECTION_LOST") {
+            handleDisconnect();
+        } else {
+            throw err;
+        }
+    });
+}
+
+
+handleDisconnect();
+*/
